@@ -1,5 +1,6 @@
 package com.scott.study.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,5 +33,6 @@ public class TestController {
     public String Data(@RequestParam String name){
         return "传入数据："+name;
     }
+
 
 }
