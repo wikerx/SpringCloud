@@ -1,14 +1,14 @@
-###SpringCloud基础理解 By - Mr.薛
+### SpringCloud基础理解 By - Mr.薛
 
-###一、概念定义
+### 一、概念定义
 	Spring Cloud是一个微服务框架，相比Doubbo等RPC框架，Spring Cloud提供的全套的分布式系统解决方案。
 	Spring Cloud对微服务基础框架Netflix的多个开源组件进行了封装，同时又实现了和云端平台以及和Spring Cloud开发框架的集成。
 	Spring Cloud为微服务架构开发涉及的配置管理，服务治理，熔断机制，智能路由，微代理，控制总线，一次性Token，全局一致性锁，leader选举，分布式session，集群状态管理等操作提供了一种简单的开发方式。
 	Spring Cloud为开发者提供了快速构建分布式系统的工具，开发者可以快速的启动服务或构建应用，同时能够快速和云平台资源进行对接。
 
-###二、Spring Cloud的项目的位置
-	·Spring Cloud是Sping的一个顶级项目，Spring的顶级项目列表如下：
-	·Spring IO platform：用于系统部署，是可集群的，构建现代化应用的版本平台，具体来说当你使用maven dependency引入spring jar包时他就在工作了。
+### 二、Spring Cloud的项目的位置
+	- Spring Cloud是Sping的一个顶级项目，Spring的顶级项目列表如下：
+	- Spring IO platform：用于系统部署，是可集群的，构建现代化应用的版本平台，具体来说当你使用maven dependency引入spring jar包时他就在工作了。
 	·Spring Boot旨在简化创建产品级的Spring应用和服务，简化了配置文件，使用嵌入式web服务器，含有诸多开箱即用的微服务功能，可以和Spring Cloud联合部署。
 	·Spring Framework：即通常所说的Spring框架，是一个开源的Java/Java EE全功能栈应用程序框架，其他Spring项目如Spring Boot也是依赖此框架。
 	·Spring Cloud：微服务工具包，为开发者提供了在分布式系统的配置管理、服务发现、断路器、智能路由、微代理
@@ -34,7 +34,7 @@
 	·Spring Loaded：用于实现java程序和web应用的热部署的开源工具。
 	·Spring REST Shell：可以调用Rest服务的命令行工具，敲命令行操作Rest服务。
 
-###三、Spring Cloud的子项目
+### 三、Spring Cloud的子项目
 	·Spring Cloud包含了汗多子项目，如：
 	·Spring Cloud Config：配置管理工具，支持使用Git存储配置内容，支持应用配置的外部存储，支持客户端配置信息刷新、加密配置内容等。
 	·Spring Cloud Bus：事件、消息总线，用于在集群（例如：配置变化事件）中传播状态变化，可与Spring Cloud Config连个实现热部署。
@@ -54,15 +54,15 @@
 	·Spring Cloud Stream：数据流操作开发包，封装了与Redis,Rabbit、Kafka等发送接收消息。
 	·Spring Cloud CLI：基于 Spring Boot CLI，可以让你以命令行方式快速建立云组件。
 
-###四、Spring Cloud的版本
+### 四、Spring Cloud的版本
 	Spring Cloud不像其他Spring子项目那样相对独立，他是一个用友诸多子项目的大型综合项目。
 	Spring Cloud可以说是微服务架构解决方案套件组合，其包含的子项目也都独立进行着内容更新与迭代，各自都维护着自己的发布版本号。因此每个Spring Cloud版本，包含着不同版本的子项目，为了管理每个版本的子项目清单，避免Spring Cloud版本号与其子项目版本号混淆，没有采用版本号方式，而是采用命名方式。
 	这些版本的名字采用了伦敦地铁站的名字，根据字母表顺序来对应版本时间顺序,如：Angel.SR6,Brixton.SR5,Brixton.SR7,Camden.M1.
 
-####注意：使用Brixton版本要注意SpringBoot的对应版本，必须要使用1.3.x，而不能使用1.4.x
+#### 注意：使用Brixton版本要注意SpringBoot的对应版本，必须要使用1.3.x，而不能使用1.4.x
 
 
-###Spring Cloud组成
+### Spring Cloud组成
 	·Spring Cloud的子项目，大致可分成两类，一类是对现有成熟框架”Spring Boot化”的封装和抽象，也是数量最多的项目；第二类是开发了一部分分布式系统的基础设施的实现，如Spring Cloud Stream扮演的就是kafka, ActiveMQ这样的角色。对于我们想快速实践微服务的开发者来说，第一类子项目就已经足够使用，如：
 	·Spring Cloud Netflix
 	　　是对Netflix开发的一套分布式服务框架的封装，包括服务的发现和注册，负载均衡、断路器、REST客户端、请求路由等。
