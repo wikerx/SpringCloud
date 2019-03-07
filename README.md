@@ -7,8 +7,8 @@
 	Spring Cloud为开发者提供了快速构建分布式系统的工具，开发者可以快速的启动服务或构建应用，同时能够快速和云平台资源进行对接。
 
 ### 二、Spring Cloud的项目的位置
-	- Spring Cloud是Sping的一个顶级项目，Spring的顶级项目列表如下：
-	- Spring IO platform：用于系统部署，是可集群的，构建现代化应用的版本平台，具体来说当你使用maven dependency引入spring jar包时他就在工作了。
+	·Spring Cloud是Sping的一个顶级项目，Spring的顶级项目列表如下：
+	·Spring IO platform：用于系统部署，是可集群的，构建现代化应用的版本平台，具体来说当你使用maven dependency引入spring jar包时他就在工作了。
 	·Spring Boot旨在简化创建产品级的Spring应用和服务，简化了配置文件，使用嵌入式web服务器，含有诸多开箱即用的微服务功能，可以和Spring Cloud联合部署。
 	·Spring Framework：即通常所说的Spring框架，是一个开源的Java/Java EE全功能栈应用程序框架，其他Spring项目如Spring Boot也是依赖此框架。
 	·Spring Cloud：微服务工具包，为开发者提供了在分布式系统的配置管理、服务发现、断路器、智能路由、微代理
@@ -77,7 +77,7 @@
 	·Spring Cloud Eureka
 	·Spring Cloud Eureka 是 Spring Cloud Netflix 微服务套件中的一部分，它基于Netflix Eureka 做了二次封装，主要负责完成微服务架构中的服务治理功能。
 
-###Spring Cloud前景
+### Spring Cloud前景
 	·Spring Cloud对于中小型互联网公司来说是一种福音，因为这类公司往往没有实力或者没有足够的资金投入去开发自己的分布式系统基础设施，
 	使用Spring Cloud一站式解决方案能在从容应对业务发展的同时大大减少开发成本。
 	同时，随着近几年微服务架构和Docker容器概念的火爆，也会让Spring Cloud在未来越来越“云”化的软件开发风格中立有一席之地，
