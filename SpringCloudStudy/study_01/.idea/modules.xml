@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EurekaClient/EurekaClient.iml" filepath="$PROJECT_DIR$/EurekaClient/EurekaClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaClient02/EurekaClient02.iml" filepath="$PROJECT_DIR$/EurekaClient02/EurekaClient02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaClient1/EurekaClient1.iml" filepath="$PROJECT_DIR$/EurekaClient1/EurekaClient1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaFeign/EurekaFeign.iml" filepath="$PROJECT_DIR$/EurekaFeign/EurekaFeign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaHystrix/EurekaHystrix.iml" filepath="$PROJECT_DIR$/EurekaHystrix/EurekaHystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaRibbon/EurekaRibbon.iml" filepath="$PROJECT_DIR$/EurekaRibbon/EurekaRibbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaServer/EurekaServer.iml" filepath="$PROJECT_DIR$/EurekaServer/EurekaServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaStudy/EurekaStudy.iml" filepath="$PROJECT_DIR$/EurekaStudy/EurekaStudy.iml" />
+    </modules>
+  </component>
+</project>
