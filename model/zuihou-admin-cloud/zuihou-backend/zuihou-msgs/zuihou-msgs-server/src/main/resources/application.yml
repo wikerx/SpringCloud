@@ -1,0 +1,214 @@
+zuihou:
+  port:
+    nginx: 80
+    eureka: 8500
+  ip:
+    redis: ${REDIS_HOST:127.0.0.1}
+    rabbitmq: ${RABBIT_HOST:127.0.0.1}
+    mysql: ${MYSQL_HOST:127.0.0.1}
+    nginx: ${NGINX_HOST:127.0.0.1}
+    eureka: ${EUREKA_HOST:127.0.0.1}
+  context-path:
+    eureka: /zuihou-eureka
+    gate: /api
+  jobs-server-uri-prefix: http://127.0.0.1:11009
+  file:
+    remote-uri-prefix: http://${zuihou.ip.nginx}:6080/ # 本地
+    inner-uri-prefix: null  # 内网通道
+  mysql:
+    msgs:
+      database: zuihou_msgs_dev      # 根据环境更改
+      driverClassName: ${zuihou.mysql.driverClassName}
+      host: ${zuihou.ip.mysql}
+      password: ${zuihou.mysql.password}
+      port: ${zuihou.mysql.port}
+      url: jdbc:mysql://${zuihou.mysql.msgs.host}:${zuihou.mysql.msgs.port}/${zuihou.mysql.msgs.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true
+      username: ${zuihou.mysql.username}
+    driverClassName: com.mysql.jdbc.Driver
+    port: 3306                  # 根据环境更改
+    username: root              # 根据环境更改
+    password: bNVOqb7WKLX5Bjnw+LMv92taj25KOxDimXxILPQjw42wgv+1lHzOH8kr97xDwWdhpY67QuYCS7sWN4W46YbkFA==
+
+
+server:
+  servlet:
+    context-path:
+  port: 11013
+  undertow: # jetty  undertow
+    io-threads: 4 # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    worker-threads: 80  # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    buffer-size: 1024  # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理 , 每块buffer的空间大小,越小的空间被利用越充分
+    direct-buffers: true  # 是否分配的直接内存
+
+logging:
+  path: /projects/logs/${spring.application.name}
+
+dozer:
+  mappingFiles: classpath:dozer/global.dozer.xml
+
+
+spring:
+  application:
+    name: zuihou-msgs-server
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 512MB      # Max file size，默认1M
+      max-request-size: 512MB   # Max request size，默认10M
+  profiles:
+    active: dev
+  rabbitmq:
+    host: ${zuihou.ip.rabbitmq}     # 根据环境更改
+    port: 5672               # 根据环境更改
+    password: zkhy          # 根据环境更改
+    username: zkhy          # 根据环境更改
+    key-prefix: zuihou:${spring.profiles.active}
+  redis:
+    host: ${zuihou.ip.redis} # 根据环境更改
+    port: 16379
+    password: SbtyMveYNfLzTks7H0apCmyStPzWJqjy
+    database: 1
+    jedis:
+      pool:
+        max-active: 50
+        min-idle: 2
+        max-idle: 20
+    key-prefix: zuihou:${spring.profiles.active}
+  sleuth:
+    sampler:
+      percentage: 0  #采样率  采用率由网关去控制
+    integration:
+      enabled: false
+    scheduled:
+      skip-pattern: "^org.*HystrixStreamTask$"
+  zipkin:
+    locator:
+      discovery:
+        enabled: true
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: USER
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+      enabled: true
+
+eureka:
+  instance:
+    status-page-url: http://${zuihou.ip.nginx}:${zuihou.port.nginx}/api/msgs/swagger-ui.html
+    status-page-url-path: ${server.servlet.context-path:}${management.endpoints.web.base-path}/info
+    health-check-url-path: ${server.servlet.context-path:}${management.endpoints.web.base-path}/health
+    preferIpAddress: true
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  client:
+    service-url:
+       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${zuihou.ip.eureka}:${zuihou.port.eureka}${zuihou.context-path.eureka}/eureka/
+
+
+feign:
+  hystrix:
+    enabled: true   # feign 熔断机制是否开启
+    #支持压缩的mime types
+  compression:  # 请求压缩
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:  # 响应压缩
+      enabled: true
+
+ribbon:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  eureka:
+    enabled: true
+  ReadTimeout: 30000     #
+  ConnectTimeout: 30000  # [ribbon超时时间]大于[熔断超时],那么会先走熔断，相当于你配的ribbon超时就不生效了  ribbon和hystrix是同时生效的，哪个值小哪个生效
+  MaxAutoRetries: 0             # 最大自动重试
+  MaxAutoRetriesNextServer: 1   # 最大自动像下一个服务重试
+  OkToRetryOnAllOperations: false  #无论是请求超时或者socket read timeout都进行重试，
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 1000 # #并发执行的最大线程数，默认10
+      maxQueueSize: 1000 # #BlockingQueue的最大队列数
+      queueSizeRejectionThreshold: 500 # #即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 120000  # 熔断超时 ribbon和hystrix是同时生效的，哪个值小哪个生效
+
+swagger2:
+  docket-info:
+    msgs:
+      title: 消息服务
+      description: 消息服务接口
+      base-path: ${zuihou.context-path.gate}/msgs
+      modules:
+        priMsgs:
+          group-name: priMsgs
+          packages: com.github.zuihou.controller.msgs
+    sms:
+      title: 短信服务
+      description: 短信服务接口
+      base-path: ${zuihou.context-path.gate}/sms
+      modules:
+        priSms:
+          group-name: priSms
+          packages: com.github.zuihou.controller.sms
+    msgsCenter:
+      title: 消息服务
+      description: 消息中心接口
+      base-path: ${zuihou.context-path.gate}/msgs
+      modules:
+        priMsgsCenter:
+          group-name: priMsgsCenter
+          packages: com.github.zuihou.controller.msgscenter
+  contact-name: zuihou
+  contact-url: http://www.zuihou.com/
+  contact-email: zuihou
+  host: ${zuihou.ip.nginx}:${zuihou.port.nginx}
+
+id-generator:
+  machine-code: 1  # id生成器机器掩码
+
+info:
+  contact:
+    email: xxx@zuihou.com
+  app: 消息服务
+
+
+
+auth:
+  serviceId: zuihou-auth-server
+  app:
+    token-header: token # 其三方应用token
+    pub-key:
+      path: app/pub.key
+  client:
+    id: zuihou-admin-server
+    secret: 123456
+    token-header: token
+    admin-header: _isAdmin
+    pub-key:
+      path: client/pub.key

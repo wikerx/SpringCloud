@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: entity-common
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: net.getbang
+Build-Jdk: 1.8.0_171
+Implementation-URL: http://projects.spring.io/spring-boot/xiaoju-paren
+ t/entity-common/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

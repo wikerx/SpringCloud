@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.getbang.mapper.codeGaneration.CgDataSourceMapper">
+	
+	<parameterMap id="parameterMap" type="net.getbang.entity.codeGaneration.CgDataSource"></parameterMap>
+	<resultMap id="resultMap" type="net.getbang.entity.codeGaneration.CgDataSource">
+		
+		
+	</resultMap>
+
+	<select id="SelectCgDataSourceListPage" resultMap="resultMap">
+		
+		select * from cg_data_source
+		
+	</select>
+	
+	<select id="getbyid" resultType="net.getbang.entity.codeGaneration.CgDataSource">
+			
+		select * from cg_data_source
+	</select>
+	
+</mapper>

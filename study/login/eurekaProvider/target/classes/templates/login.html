@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html class="login-alone">
+    <head>
+        <title>Login</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link href="static/res/ui/css/screen.css?v=3.9" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="static/res/ui/css/base.css?v=3.9"/>
+        <link rel="stylesheet" type="text/css" href="static/res/passport/css/login.css?v=3.9"/>
+        <script src="static/js/jquery-1.7.2.js"></script>
+  		<script src="static/layer/layer.js"></script>
+        <script src="static/js/validate.js"></script>
+		<link rel="icon" href="static/images/favicon.png" type="image/x-icon" />
+    </head>
+    <body>
+        <div class="logina-logo" style="height: 55px">
+            <a href="">
+                <img src="" height="60" alt=""/>
+            </a>
+        </div>
+        <div class="logina-main main clearfix">
+            <div class="tab-con"><h2 align="right" style="color:#44ACEE;font-family:Verdana, Geneva, sans-serif;font-size:25px;font-weight:bolder;">XXX单点登录系统</h2>
+            <br/>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <th>账户</th>
+                            <td width="245">
+                                <input id="account" type="text" name="account" placeholder="账户" autocomplete="off" value=""></td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>密码</th>
+                            <td width="245">
+                                <input id="password" type="password" name="password" placeholder="请输入密码" autocomplete="off">
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>验证码</th>
+                            <td width="245">
+                                    <div class="valid">
+                                        <input type="text" name="vcode" id="vcode" value="tlj3"><img class="vcode" src="static/images/validate.png" width="85" height="35" alt="">
+                                    </div>
+                                </td>
+                           <td></td>
+                        </tr>
+                        <tr class="find">
+                            <th></th>
+                            <td>
+                                <div>
+                                    <label class="checkbox" for="chk11"><input style="height: auto;" id="chk11" type="checkbox" name="remember_me" >记住我</label>
+                                    <a href="passport/forget-pwd">忘记密码？</a>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td width="245"><input class="confirm" type="button" value="登  录" onClick="checkForm()"></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            <div class="reg">
+                <p>还没有账号？<br>赶快免费注册一个吧！</p>
+                <a class="reg-btn" href="insert">立即免费注册</a>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="copyright">Copyright © 2014 Mr.薛 All Rights Reserved. Mr.薛 版权所有</div>
+        </div> 
+    </body>
+</html>

@@ -1,0 +1,25 @@
+group 'com.yb.mall'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':common-api')
+    compile project(':common-mq-api')
+
+    //服务需要加入zipKin链路追踪
+    compile("org.springframework.cloud:spring-cloud-starter-zipkin")
+    compile("org.springframework.retry:spring-retry")
+    compile("org.springframework.boot:spring-boot-starter-aop")
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

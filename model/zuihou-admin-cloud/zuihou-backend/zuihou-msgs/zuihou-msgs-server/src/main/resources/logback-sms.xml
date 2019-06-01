@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<included>
+
+    <appender name="SERVICE_APPENDER_SMS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/service_sms.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM}/service_sms-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
+            <!-- 单个日志文件最多 100MB, 60天的日志周期，最大不能超过20GB -->
+            <maxFileSize>128MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${common-pattern}</pattern>
+        </encoder>
+    </appender>
+    <appender name="CONTROLLER_APPENDER_SMS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/controller_sms.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM}/controller_sms-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
+            <!-- 单个日志文件最多 100MB, 60天的日志周期，最大不能超过20GB -->
+            <maxFileSize>128MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${common-pattern}</pattern>
+        </encoder>
+    </appender>
+    <appender name="DAO_APPENDER_SMS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/dao_sms.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM}/dao_sms-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
+            <!-- 单个日志文件最多 100MB, 60天的日志周期，最大不能超过20GB -->
+            <maxFileSize>128MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${common-pattern}</pattern>
+        </encoder>
+    </appender>
+    
+    <logger name="com.github.zuihou.sms.service" additivity="true" level="${log.level.service}">
+        <appender-ref ref="SERVICE_APPENDER_SMS"/>
+    </logger>
+    <logger name="com.github.zuihou.sms.controller" additivity="true" level="${log.level.impl}">
+        <appender-ref ref="CONTROLLER_APPENDER_SMS"/>
+    </logger>
+    <logger name="com.github.zuihou.sms.dao" additivity="true" level="${log.level.sql}">
+        <appender-ref ref="DAO_APPENDER_SMS"/>
+        <appender-ref ref="CONSOLE_DAO_APPENDER"/>
+    </logger>
+
+</included>
+

@@ -1,0 +1,9 @@
+dependencies {
+    configurations {
+        all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.cloud:spring-cloud-config-server')
+    compile('org.springframework.cloud:spring-cloud-starter-consul-all')
+}

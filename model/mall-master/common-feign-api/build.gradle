@@ -1,0 +1,21 @@
+ext {
+    jacksonDatatypeJsr310Version = '2.9.6'
+    swaggerVersion = '2.6.1'
+    lombokVersion = '1.16.20'
+}
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-openfeign')
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+    compile("org.springframework.boot:spring-boot-starter-data-redis")
+    // swagger
+    compile("io.springfox:springfox-swagger2:${swaggerVersion}")
+    //compile("com.zd.swagger:swagger:${swaggerVersion}")
+
+    // lombok
+    compile("org.projectlombok:lombok:${lombokVersion}")
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonDatatypeJsr310Version}")
+
+    compile("com.aliyun:aliyun-java-sdk-push:3.10.0")
+    compile("com.aliyun:aliyun-java-sdk-core:3.2.8")
+}

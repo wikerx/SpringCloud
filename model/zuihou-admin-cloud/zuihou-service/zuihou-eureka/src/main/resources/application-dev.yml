@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+
+eureka:
+  environment: dev
+  datacenter: linux
+  server:
+    enable-self-preservation: false  # 关闭自我保护
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${zuihou.ip.local}:${zuihou.port.local}${server.servlet.context-path}/eureka/

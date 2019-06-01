@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.13.RELEASE'
+        springCloudVersion = 'Edgware.SR5'
+    }
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://192.168.3.2:9081/nexus/content/groups/public' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://192.168.3.2:9081/nexus/content/groups/public' }
+    mavenCentral()
+}
+
+group 'com.yb.mall'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://192.168.3.2:9081/nexus/content/groups/public' }
+        mavenCentral()
+    }
+    buildscript {
+        repositories {
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'http://192.168.3.2:9081/nexus/content/groups/public' }
+            mavenCentral()
+        }
+        dependencyManagement {
+            imports {
+                mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            }
+        }
+    }
+}

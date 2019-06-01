@@ -1,0 +1,267 @@
+# eureka 主机/端口配置 start
+zuihou:
+  ip:
+    nginx: 127.0.0.1
+    eureka: 127.0.0.1
+    redis: 127.0.0.1
+    rabbitmq: 127.0.0.1
+    mysql: 127.0.0.1
+    local: 127.0.0.1
+  port:
+    eureka: 8500
+    nginx: ${server.port}
+    local: 9770
+  context-path:
+    eureka: /zuihou-eureka
+# eureka 主机/端口配置 end
+
+
+
+logging:
+  path: ./logs/zuihou-gateway-server
+  file: ${logging.path}/root.log
+  common-pattern: '%d{yyyy-MM-dd HH:mm:ss.SSS}:[%5p] [%t:%r] [%C{1}:%M:%L] --> %m%n'
+  level:
+    console: INFO
+    filter: INFO
+
+server:
+  port: ${zuihou.port.local}
+  servlet:
+    context-path: /api  # = server.context-path
+    path: /gate   # = server.servlet-path
+
+# eureka实例的状态页面和健康监控默认为/info和/health，这是spring boot actuator提供的默认终端点。当应用不使用默认的上下文(context path或servlet path，比如配置server.servletPath=/test），或者管理zhongduan路径（比如配置management.contextPath=/admin）。
+eureka:
+  instance:
+    status-page-url: http://${zuihou.ip.nginx}:${zuihou.port.nginx}${server.servlet.context-path}${management.endpoints.web.base-path}/info
+    status-page-url-path: ${server.servlet.context-path}${management.endpoints.web.base-path}/info
+    health-check-url-path: ${server.servlet.context-path}${management.endpoints.web.base-path}/health
+    preferIpAddress: true
+    ip-address: ${zuihou.ip.local}
+    instance-id: ${zuihou.ip.local}:${server.port}${server.servlet.context-path}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  client:
+    service-url:
+       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${zuihou.ip.eureka}:${zuihou.port.eureka}${zuihou.context-path.eureka}/eureka/
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: zuihou-gateway-server
+#  http:
+#    multipart:
+#      max-file-size: 2000Mb      # Max file size，默认1M
+#      max-request-size: 2500Mb
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  rabbitmq:
+    host: zuihou.rabbitmq.host
+    port: 5672
+    password: guest
+    username: guest
+  mvc:
+    # #设定静态文件路径，js,css等
+    static-path-pattern: /static/**
+    view:
+      suffix: .html
+  freemarker:
+    template-loader-path: classpath:/templates
+    cache: false
+    charset: UTF-8
+    suffix: .html
+  redis:
+    host: zuihou.redis.host
+    port: 6379
+#    pool:
+#      max-active: 20
+#      min-idle: 2
+#      max-idle: 8
+#      max-wait: 100
+    key-prefix: dev
+    jedis:
+      pool:
+        max-active: 20
+        min-idle: 2
+        max-idle: 8
+  sleuth:
+    sampler:
+      percentage: 1
+    integration:
+      enabled: false
+    scheduled:
+      skip-pattern: "^org.*HystrixStreamTask$"
+  zipkin:
+#    base-url: http://zuihou-zipkin:8510
+    locator:
+      discovery:
+        enabled: true
+    service:
+      name: ${spring.application.name}
+  servlet:
+    multipart:
+      max-file-size: 2000Mb
+      max-request-size: 2500Mb     # Max file size，默认1M
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: USER
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+      enabled: true
+
+#management:
+#  security:
+#    enabled: true
+#  context-path: /mgmt
+#
+#security:
+#  basic:
+#    enabled: true
+#    path: ${management.context-path}
+#  user:
+#    name: admin
+#    password: ${SECURITY_USER_PASSWORD:admin}
+#endpoints:
+#  health:
+#    enabled: true
+#    sensitive: true  #actuator的health接口是否需要安全保证
+
+
+
+zuul:
+  servlet-path: /
+  ignored-services: "*"   # 忽略eureka上的所有服务
+  sensitive-headers:      # 一些比较敏感的请求头，不想通过zuul传递过去， 可以通过该属性进行设置
+#  prefix: / #为zuul设置一个公共的前缀
+  ratelimit: # 网关限流
+    key-prefix: gateway_rate
+    enabled: false
+    repository: REDIS #REDIS, JPA, IN_MEMORY
+    behind-proxy: true
+    default-policy: # optional - will apply unless specific policy exists
+      limit: 10
+      refresh-interval: 60 #default value (in seconds)
+      type: #optional
+        - user
+        - origin
+        - url
+  routes:  # 路由配置方式
+    base:  # 其中 back 是路由名称，可以随便定义，但是path和service-id需要一一对应
+      path: /base/**
+      serviceId: zuihou-base-server
+    admin:  # 其中 admin 是路由名称，可以随便定义，但是path和service-id需要一一对应
+      path: /admin/**
+      serviceId: zuihou-admin-server
+    auth:    # 其中 auth 是路由名称，可以随便定义，但是path和service-id需要一一对应
+      path: /auth/**
+      serviceId: zuihou-auth-server
+    file:
+      path: /file/**
+      serviceId: zuihou-file-server
+    msgs:
+      path: /msgs/**
+      serviceId: zuihou-msgs-server
+
+# 网关忽略拦截前缀（自定义）
+gateway:
+  ignore:
+    start-with-list:
+      - /static
+      - /error
+      - /actuator/**
+      - /gate/**
+      - /**/swagger-ui.html
+      - /**/webjars/**
+      - /**/v2/api-docs/**
+      - /**/swagger-resources/**
+      - /auth/app
+      - /auth/client
+#      - /base/swagger-ui.html
+#      - /base/webjars
+#      - /base/v2/api-docs
+#      - /base/swagger-resources
+#      - /admin/swagger-ui.html
+#      - /admin/webjars
+#      - /admin/v2/api-docs
+#      - /admin/swagger-resources
+#      - /file/swagger-ui.html
+#      - /file/webjars
+#      - /file/v2/api-docs
+#      - /file/swagger-resources
+
+
+feign:
+  hystrix:
+    enabled: true   # feign 熔断机制是否开启
+    #支持压缩的mime types
+  compression:  # 请求压缩
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:  # 响应压缩
+      enabled: true
+
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 60000     #
+  ConnectTimeout: 60000  # [ribbon超时时间]大于[熔断超时],那么会先走熔断，相当于你配的ribbon超时就不生效了  ribbon和hystrix是同时生效的，哪个值小哪个生效
+#  ReadTimeout: 5000
+#  ConnectTimeout: 5000
+  MaxAutoRetries: 0             # 最大自动重试
+  MaxAutoRetriesNextServer: 1   # 最大自动像下一个服务重试
+  OkToRetryOnAllOperations: false  #无论是请求超时或者socket read timeout都进行重试，
+
+
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 1000 # #并发执行的最大线程数，默认10
+      maxQueueSize: 1000 # #BlockingQueue的最大队列数
+      queueSizeRejectionThreshold: 500 # #即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+#            timeoutInMilliseconds: 5000  # [熔断超时]  ribbon和hystrix是同时生效的，哪个值小哪个生效
+            timeoutInMilliseconds: 60000  # 熔断超时
+
+auth:
+  serviceId: zuihou-auth-server
+  app:
+    token-header: token # 其三方应用token
+    pub-key:  # 服务端公钥路径
+      path: app/pub.key
+  client:
+    id: zuihou-gateway-server  #不填则默认读取spring.application.name
+    secret: 123456
+    token-header: token
+    admin-header: _isAdmin
+    pub-key: # 客服端公钥路径
+      path: client/pub.key
+
+info:
+  artifact: zuiou-gateway-server
+  name: '@project.name@'
+  description: '@project.description@'
+  version: '@project.version@'
+  spring-boot-version: '@spring.boot.version@'
+  spring-cloud-version: '@spring.cloud.version@'

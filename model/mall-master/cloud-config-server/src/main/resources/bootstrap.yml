@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+        # dev
+      host: 192.168.3.2
+      port: 8500
+    config:
+      server:
+        native:
+          search-locations: classpath:config/dev/,classpath:config/test/,classpath:config/prod/
+  profiles:
+    include: native
+
+management:
+  security:
+    enabled: false

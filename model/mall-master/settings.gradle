@@ -1,0 +1,20 @@
+rootProject.name = 'mall-master'
+//公共API
+include 'common-api'
+//cloud api网关
+include 'cloud-zuul-server'
+//配置中心
+include 'cloud-config-server'
+//RocketMQ
+include 'common-mq-api'
+//Feign
+include 'common-feign-api'
+//商品子系统
+include 'property-client-service'
+//搜索子系统
+include 'property-solr-service'
+//公共Mybatis-plus代码处理器
+include 'common-generators'
+//链路追踪服务端
+include 'cloud-zipkin-server'
+

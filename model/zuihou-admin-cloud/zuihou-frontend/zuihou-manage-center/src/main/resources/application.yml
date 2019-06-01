@@ -1,0 +1,91 @@
+# eureka 主机/端口配置 start
+zuihou:
+  variable:
+    gate-way-url-prefix: http://${zuihou.ip.nginx}:${zuihou.port.nginx}${zuihou.context-path.gate}
+  ip:
+    nginx: 127.0.0.1
+    eureka: 127.0.0.1
+    redis: 127.0.0.1
+    rabbitmq: 127.0.0.1
+    local: 127.0.0.1
+  port:
+    eureka: 8500
+    nginx: 9770  # 本地未开启nginx ，则nginx端口=zuul端口
+    local: 9740
+  context-path:
+    eureka: /zuihou-eureka
+    gate: /api
+  local:
+    app-id: 10000
+    app-secret: 10000
+# eureka 主机/端口配置 end
+
+shiro:
+  realm: com.github.zuihou.center.shiro.ShiroAuthorizingRealm
+  loginUrl: http://${zuihou.ip.nginx}:${server.port}${server.servlet.context-path}/login
+  successUrl: http://${zuihou.ip.nginx}:${server.port}${server.servlet.context-path}/index
+  unauthorizedUrl: http://${zuihou.ip.nginx}:${server.port}${server.servlet.context-path}/unauthorized
+  filterChainDefinitions:
+    anon:
+      - /login
+      - /register
+      - /zuihou-center/static/**
+      - /static/**
+      - /mgmt/**
+      - /webjars/**
+    logout:
+      - /logout
+    authc:
+      /**
+
+server:
+  port: ${zuihou.port.local}
+  servlet:
+    context-path: /${spring.application.name}
+
+eureka:
+  instance:
+    status-page-url: http://${zuihou.ip.nginx}:${zuihou.port.local}${server.servlet.context-path}
+    status-page-url-path: ${server.servlet.context-path:}${management.endpoints.web.base-path:}/info
+    health-check-url-path: ${server.servlet.context-path:}${management.endpoints.web.base-path:}/health
+    preferIpAddress: true
+    ip-address: ${zuihou.ip.local}
+    instance-id: ${zuihou.ip.local}:${server.port}${server.servlet.context-path:}
+    metadata-map:
+      user.name: admin
+      user.password: admin
+  client:
+    service-url:
+       defaultZone: http://admin:admin@${zuihou.ip.eureka}:${zuihou.port.eureka}${zuihou.context-path.eureka}/eureka/
+
+spring:
+#  thymeleaf:
+#    cache: false
+#    prefix: classpath:/templates/
+#  mvc:
+#    static-path-pattern: /static/**
+#    view:
+#      suffix: .html
+  mvc:
+    # #设定静态文件路径，js,css等
+    static-path-pattern: /static/**
+    view:
+      suffix: .html
+  freemarker:
+    template-loader-path: classpath:/templates
+    cache: false
+    charset: UTF-8
+    suffix: .html
+    settings:
+      number_format: 0.##       #解決freemarker数字输出中的逗号问题
+      classic_compatible: true  #默认情况变量为null则替换为空字符串，如果需要自定义，写上${empty!"EmptyValue of fbysss"}的形式即可
+      whitespace_stripping: true      # 剥离前后空字符串
+      boolean_format: true,false      # 布尔类型格式化
+      datetime_format: yyyy-MM-dd HH:mm:ss  # dateTime 类型格式化， 使用日期类型时， 需要在参数后追加 ?datetime eg: ${date?datetime}
+      date_format: yyyy-MM-dd   # date 类型格式化， 使用日期类型时， 需要在参数后追加 ?date eg: ${date?date}
+      time_format: HH:mm:ss      # time 类型格式化， 使用日期类型时， 需要在参数后追加 ?time eg: ${date?time}
+      template_exception_handler: ignore   # 忽略模版异常
+      default_encoding: UTF-8      # 默认编码
+      url_escaping_charset: UTF-8  # url 转义编码
+  application:
+    name: zuihou-center

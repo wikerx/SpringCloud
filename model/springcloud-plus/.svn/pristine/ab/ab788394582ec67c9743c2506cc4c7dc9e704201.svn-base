@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: service-zuul
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: net.getbang
+Build-Jdk: 1.8.0_171
+Implementation-URL: http://projects.spring.io/spring-boot/xiaoju-paren
+ t/service-zuul/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

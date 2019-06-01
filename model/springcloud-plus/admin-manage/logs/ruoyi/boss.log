@@ -1,0 +1,94 @@
+14:40:28.497 [restartedMain] INFO  net.getbang.AdminManageApplication - Starting AdminManageApplication on GZ-20170731HZYR with PID 13684 (E:\eclipse-workspace\springcloud\xiaoju-parent\admin-manage\target\classes started by Administrator in E:\eclipse-workspace\springcloud\xiaoju-parent\admin-manage)
+14:40:28.512 [restartedMain] DEBUG net.getbang.AdminManageApplication - Running with Spring Boot v1.5.10.RELEASE, Spring v4.3.14.RELEASE
+14:40:28.513 [restartedMain] INFO  net.getbang.AdminManageApplication - The following profiles are active: druid
+14:40:28.756 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.6.Final
+14:40:31.442 [restartedMain] INFO  org.apache.shiro.cache.ehcache.EhCacheManager - Cache with name 'net.getbang.framework.shiro.realm.UserRealm.authorizationCache' does not yet exist.  Creating now.
+14:40:31.443 [restartedMain] INFO  org.apache.shiro.cache.ehcache.EhCacheManager - Added EhCache named [net.getbang.framework.shiro.realm.UserRealm.authorizationCache]
+14:40:32.140 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+14:40:32.836 [restartedMain] INFO  org.apache.shiro.cache.ehcache.EhCacheManager - Using existing EHCache named [loginRecordCache]
+14:40:34.201 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:40:34.204 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.27
+14:40:34.328 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:40:34.783 [restartedMain] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+14:40:34.800 [restartedMain] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+14:40:34.800 [restartedMain] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.0 created.
+14:40:34.815 [restartedMain] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.0) 'RuoyiScheduler' with instanceId 'GZ-20170731HZYR1527489634785'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+14:40:34.816 [restartedMain] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'RuoyiScheduler' initialized from an externally provided properties instance.
+14:40:34.816 [restartedMain] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.0
+14:40:34.817 [restartedMain] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@1b822009
+14:40:34.858 [restartedMain] DEBUG net.getbang.project.monitor.job.mapper.JobMapper.selectJobAll - ==>  Preparing: SELECT job_id, job_name, job_group, method_name, params, cron_expression, status, create_by, create_time FROM sys_job 
+14:40:35.010 [restartedMain] DEBUG net.getbang.project.monitor.job.mapper.JobMapper.selectJobAll - ==> Parameters: 
+14:40:35.029 [restartedMain] DEBUG net.getbang.project.monitor.job.mapper.JobMapper.selectJobAll - <==      Total: 2
+14:40:35.134 [restartedMain] ERROR net.getbang.project.monitor.job.util.ScheduleUtils - Couldn't retrieve trigger: com.ruoyi.project.monitor.job.domain.Job
+14:40:35.148 [restartedMain] ERROR net.getbang.project.monitor.job.util.ScheduleUtils - Unable to store Job : 'DEFAULT.TASK_1', because one already exists with this identification.
+14:40:35.150 [restartedMain] ERROR net.getbang.project.monitor.job.util.ScheduleUtils - Couldn't retrieve trigger: com.ruoyi.project.monitor.job.domain.Job
+14:40:35.152 [restartedMain] ERROR net.getbang.project.monitor.job.util.ScheduleUtils - Unable to store Job : 'DEFAULT.TASK_2', because one already exists with this identification.
+14:40:36.544 [restartedMain] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+14:40:39.750 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8086"]
+14:40:39.773 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8086"]
+14:40:39.833 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+14:40:39.860 [restartedMain] INFO  net.getbang.AdminManageApplication - Started AdminManageApplication in 11.959 seconds (JVM running for 12.884)
+14:40:40.968 [Quartz Scheduler [RuoyiScheduler]] INFO  org.quartz.core.QuartzScheduler - Scheduler RuoyiScheduler_$_GZ-20170731HZYR1527489634785 started.
+14:40:41.498 [http-nio-8086-exec-1] INFO  org.apache.tomcat.util.http.parser.Cookie - A cookie header was received [1506672155,1506735592; cs=2; CNZZDATA1000234875=371896706-1511945064-%7C1512031627; pgv_pvi=4832596992; Idea-755a90e2=ee1fa938-9149-4fe6-9073-e80010fd2692; rememberMe=w43geroWQ1zGgXuxOHS0jCq3HB1ahidFt9/6XX4qHgOeL8/uU1Sa8TMgROGcZHVoUI/9nHMu+gESxCt77pGmIgIevJ/FipuWU88ccpMrNnb0Hlib0JBUuFPyfaPCH05lSh8UWSmRSsABkx0WBlkT4yrsTkUei2h8xSbUp1F8Yuw6vP+0R99an4pgcwjkDA7vl57rE5POo5X91WVXHZ5PNYpvdBHyaQ36cgI/DmBCHJ3L8qHP23xS9+78D1hcKcNzjdIv6Yp6L4wwV+sOJtc0GvxE30/tEC3pMQbgf/xWeOqd03ptx0mAb8drTAcu376SzkI7fWqteyDphhxmKUQkNCJSynwl+EpxCjP/UhsTYdLnVoYhLaEd780tAU2yPkd/6KWe6ZPyydxkcQUjRVyv9XRr/DTVNjD2ifwNGx6bKIXEm4gPWcS4Hhdi9e9P4jJ1tgUD3NLS/55Yxlp+SDWDnXcqCS0KEJvANK5IJzB69DrrgC7r/c2NX/shxndzcUpuQ7zNBO0E8y9KEdXNbf7vBVTYbNoP71nZGpb7ocJQMoeTQlj2eEW/TP0jCYfaE922kU1Q7o4yZI7rszaadm3iO0JMeemtn63vxsGFB0Mrdj8hTblN8kf/wlfxpPGKVr61KdajhqC1KaxKexgmSiDi7XBmU5VfFPL3ywFw2baV4Rz8C6kcLHjcVwW1SXr6gD0Qz1NU+AZVQJ3+AXuNCAupe463nY0W02uajyTRTjEoF19VvW1lWtOG7ojo3XZqpL/r8R5+VEnvjxJXv6E8cPUeWDUPKkBvt21CVGrsDnpsaptEoAn9SYwLYAxno7ZF9DWS++u08YyCVGdDALYkNnRIN/LSpPxcVfEISz1S4w73jrBYrhlYn3YdzDJ4eA0W031nPd4kqeMorEm/hefjJj9/m0La9kmLWdHSQMOIYnrhgw65aRiMDdUqB6snKbuh/2rnAJHkPLE8UtL0bCM2ZxVrru9TSfqTOUecp7zsCuakkog1gMc5x4mn1eRnwjSDqo1RysJJwth7ldeu9ZtB44YQJGjW9juE7kM2+1PRag3lRtTpuOQvDr0qpwLgeIqMeipiF1M8ZiaKdt5cYuYTRdSMMbahkBXp8MfFbe+2UddtwjTiyA5GOt8sjflgrbu1RhbQ2U+3RjKwhStgD0OPgVhrJ2R2p+Lkvf+pFCoVhNbcEUS4jhqEecR3N80HMex8vRY0MFrB8na/Y9x7OzeuGHxUeRtbkUuy7cY+d/Rw0HTdF9Hv0YbxB7SHXxrPFNfEMc54yYdjxS2eIIfg/nljbtnkHgXRodqR/6PK6Ag5B99W+cQOqHnnyi+H7EvHxoMXUUmK5y/XbYi/Ao3TskgGvolIRd294RclhkRzDSN07gmjoO76D+xXEA2ebWeixq4PhnABzk9qS+0BIuWjJHykNSrUEXkZMiLwjtRlmzxFAmLs2s9RR+Lft6111P61VSszpOH4L/IMuuZJE1LYOEhuQMl2gn91wabA+r8KnH0I3LoN/AH3fCcrN+r6QGEvdIcJHL4ap4EO/KvVwvQZhc8NN8dkDRW7ycJ/plTUhL9Rp/Rp+wOfolV63TYdegeEO9Vhpov5m9iRpgHAGPJhj40HFjMDoPVuOv47QcBntegfZDdmDgN5QwaYEHOV4twVmiKuXQj+J0hiSiBk8iuILEgld6gR5GLHC1vz50jnMBCnwtHu6suh7dNF5SfcvxADK+D9IfccRK8s0d3kpuIaM07UvYFGYKYkTy+pIjDaamR1pMAJO5ZdV+doWAdorgEhfrSrGStHV4PTktUVi33uhdz3Hz99s6aLV2aausq+UWqJKvKXVc7SGw8m0iDD6xc0TiB4x4KxQkaMHWKfBCE2p+qQO1VNe88tpvTT7BdwTqDM60eL0WJ7FjduaLq5jxPxLwrUsp9wUyfjJoxI0AfVZKy3MDK5O6sw9vGXzzGAJxUKNSyLDu0=; JSESSIONID=9a339f09-9283-4a70-becd-5ebc0a9c17fd] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
+14:40:41.563 [http-nio-8086-exec-1] INFO  org.apache.shiro.session.mgt.AbstractValidatingSessionManager - Enabling session validation scheduler...
+14:40:41.563 [http-nio-8086-exec-1] DEBUG net.getbang.framework.shiro.web.session.SpringSessionValidationScheduler - Scheduling session validation job using Spring Scheduler with session validation interval of [600000]ms...
+14:40:41.564 [http-nio-8086-exec-1] DEBUG net.getbang.framework.shiro.web.session.SpringSessionValidationScheduler - Session validation job successfully scheduled with Spring Scheduler.
+14:40:41.566 [http-nio-8086-exec-1] INFO  org.apache.shiro.cache.ehcache.EhCacheManager - Using existing EHCache named [shiro-activeSessionCache]
+14:40:41.573 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.574 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.579 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.593 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.593 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.596 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.622 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.623 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.625 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.626 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.626 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.628 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.633 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.634 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.638 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.639 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.639 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.642 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.644 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.646 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.650 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.651 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==>  Preparing: select * from sys_user_online where sessionid = ? 
+14:40:41.652 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String)
+14:40:41.654 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineById - <==      Total: 1
+14:40:41.662 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.saveOnline - ==>  Preparing: replace into sys_user_online(sessionId, login_name, dept_name, ipaddr, browser, os, status, start_timestsamp, last_access_time, expire_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+14:40:41.691 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.saveOnline - ==> Parameters: 9a339f09-9283-4a70-becd-5ebc0a9c17fd(String), admin(String), 研发一部(String), 0:0:0:0:0:0:0:1(String), Chrome(String), Windows 7(String), on_line(String), 2018-05-28 14:40:41.654(Timestamp), 2018-05-28 14:40:41.66(Timestamp), 1800000(Long)
+14:40:41.742 [http-nio-8086-exec-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.saveOnline - <==    Updates: 2
+14:40:42.565 [pool-2-thread-1] INFO  net.getbang.framework.shiro.web.session.OnlineWebSessionManager - invalidation sessions...
+14:40:42.570 [pool-2-thread-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineByExpired - ==>  Preparing: SELECT * FROM sys_user_online o WHERE o.last_access_time <= ? ORDER BY o.last_access_time ASC 
+14:40:42.572 [pool-2-thread-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineByExpired - ==> Parameters: 2018-05-28 14:10:42(String)
+14:40:42.573 [pool-2-thread-1] DEBUG net.getbang.project.monitor.online.mapper.UserOnlineMapper.selectOnlineByExpired - <==      Total: 0
+14:40:42.574 [pool-2-thread-1] INFO  net.getbang.framework.shiro.web.session.OnlineWebSessionManager - Finished invalidation session. No sessions were stopped.
+14:41:00.859 [http-nio-8086-exec-9] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+14:41:01.061 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.menu.mapper.MenuMapper.selectMenusByUserId - ==>  Preparing: select distinct m.menu_id, m.parent_id, m.menu_name, m.url, m.perms , m.menu_type, m.icon, m.order_num, m.create_time from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? and m.menu_type in ('M', 'C') and m.visible = 0 order by m.order_num 
+14:41:01.064 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.menu.mapper.MenuMapper.selectMenusByUserId - ==> Parameters: 1(Long)
+14:41:01.072 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.menu.mapper.MenuMapper.selectMenusByUserId - <==      Total: 17
+14:41:05.252 [http-nio-8086-exec-5] DEBUG net.getbang.project.system.role.mapper.RoleMapper.selectRolesByUserId - ==>  Preparing: SELECT r.role_id, r.role_name, r.role_key FROM sys_user u LEFT JOIN sys_user_role ur ON u.user_id = ur.user_id LEFT JOIN sys_role r ON ur.role_id = r.role_id WHERE ur.user_id = ? 
+14:41:05.254 [http-nio-8086-exec-5] DEBUG net.getbang.project.system.role.mapper.RoleMapper.selectRolesByUserId - ==> Parameters: 1(Long)
+14:41:05.256 [http-nio-8086-exec-5] DEBUG net.getbang.project.system.role.mapper.RoleMapper.selectRolesByUserId - <==      Total: 1
+14:41:05.258 [http-nio-8086-exec-5] DEBUG net.getbang.project.system.menu.mapper.MenuMapper.selectPermsByUserId - ==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+14:41:05.259 [http-nio-8086-exec-5] DEBUG net.getbang.project.system.menu.mapper.MenuMapper.selectPermsByUserId - ==> Parameters: 1(Long)
+14:41:05.264 [http-nio-8086-exec-5] DEBUG net.getbang.project.system.menu.mapper.MenuMapper.selectPermsByUserId - <==      Total: 67
+14:41:05.572 [http-nio-8086-exec-10] DEBUG net.getbang.project.system.dept.mapper.DeptMapper.selectDeptAll - ==>  Preparing: select dept_id, parent_id, dept_name, order_num, leader, phone, email, status, create_by, create_time from sys_dept 
+14:41:05.573 [http-nio-8086-exec-10] DEBUG net.getbang.project.system.dept.mapper.DeptMapper.selectDeptAll - ==> Parameters: 
+14:41:05.576 [http-nio-8086-exec-10] DEBUG net.getbang.project.system.dept.mapper.DeptMapper.selectDeptAll - <==      Total: 10
+14:41:05.658 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.user.mapper.UserMapper.selectUserList_COUNT - ==>  Preparing: SELECT count(0) FROM sys_user 
+14:41:05.659 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.user.mapper.UserMapper.selectUserList_COUNT - ==> Parameters: 
+14:41:05.661 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.user.mapper.UserMapper.selectUserList_COUNT - <==      Total: 1
+14:41:05.667 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.user.mapper.UserMapper.selectUserList - ==>  Preparing: SELECT user_id, dept_id, login_name, user_name, email, phonenumber, password, sex, avatar, salt, user_type, status, refuse_des, create_by, create_time FROM sys_user order by create_time desc LIMIT ? 
+14:41:05.679 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.user.mapper.UserMapper.selectUserList - ==> Parameters: 10(Integer)
+14:41:05.695 [http-nio-8086-exec-9] DEBUG net.getbang.project.system.user.mapper.UserMapper.selectUserList - <==      Total: 10

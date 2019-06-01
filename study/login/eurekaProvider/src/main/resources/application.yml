@@ -1,0 +1,19 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 8001
+  context-path: /payment
+#  服务与服务之间相互调用一般都是根据这个name
+spring:
+  application:
+    name: loginProviderNo1
+  profiles:
+    active: dev
+#    静态资源
+  mvc:
+      static-path-pattern: /static/**
+  thymeleaf:
+      prefix: classpath:/templates/
+      mode: HTML5

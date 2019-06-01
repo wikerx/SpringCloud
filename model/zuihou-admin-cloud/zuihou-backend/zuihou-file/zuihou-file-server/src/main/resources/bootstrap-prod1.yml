@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: prod1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${zuihou.eureka.hostname.prod1}:${zuihou.eureka.server.port.prod1}/eureka/,http://${zuihou.eureka.hostname.prod2}:${zuihou.eureka.server.port.prod2}/eureka/

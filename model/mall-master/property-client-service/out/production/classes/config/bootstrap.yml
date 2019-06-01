@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: property-client-service
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}-${random.int[10000,99999]}
+        # dev
+      host: 192.168.3.235
+      port: 8500
+    config:
+      discovery:
+        service-id: cloud-config-server
+        enabled: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 6
+        max-interval: 2000
+        multiplier: 1.1
+      fail-fast: true
+      profile: dev
+  zipkin:
+    base-url: http://localhost:8089/
+
+management:
+  security:
+    enabled: false
+
+
+logging:
+  level:
+    org:
+      springframework: INFO
+    com:
+      zd:
+        pps:
+          app: TRACE

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/admin-manage/admin-manage.iml" filepath="$PROJECT_DIR$/admin-manage/admin-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client/config-client.iml" filepath="$PROJECT_DIR$/config-client/config-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entity-common/entity-common.iml" filepath="$PROJECT_DIR$/entity-common/entity-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client/eureka-client.iml" filepath="$PROJECT_DIR$/eureka-client/eureka-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getbang-common/getbang-common.iml" filepath="$PROJECT_DIR$/getbang-common/getbang-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getbang-shop/getbang-shop.iml" filepath="$PROJECT_DIR$/getbang-shop/getbang-shop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getbang-shop/getbang-shop-api/getbang-shop-api.iml" filepath="$PROJECT_DIR$/getbang-shop/getbang-shop-api/getbang-shop-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getbang-shop/getbang-shop-service/getbang-shop-service.iml" filepath="$PROJECT_DIR$/getbang-shop/getbang-shop-service/getbang-shop-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-netease-im/server-netease-im.iml" filepath="$PROJECT_DIR$/server-netease-im/server-netease-im.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-redis/server-redis.iml" filepath="$PROJECT_DIR$/server-redis/server-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-solr/server-solr.iml" filepath="$PROJECT_DIR$/server-solr/server-solr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-code-ganeration/service-code-ganeration.iml" filepath="$PROJECT_DIR$/service-code-ganeration/service-code-ganeration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-common/service-common.iml" filepath="$PROJECT_DIR$/service-common/service-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-feign/service-feign.iml" filepath="$PROJECT_DIR$/service-feign/service-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-login/service-login.iml" filepath="$PROJECT_DIR$/service-login/service-login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-mysql/service-mysql.iml" filepath="$PROJECT_DIR$/service-mysql/service-mysql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-reptile/service-reptile.iml" filepath="$PROJECT_DIR$/service-reptile/service-reptile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-ribbon/service-ribbon.iml" filepath="$PROJECT_DIR$/service-ribbon/service-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-user/service-user.iml" filepath="$PROJECT_DIR$/service-user/service-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-zuul/service-zuul.iml" filepath="$PROJECT_DIR$/service-zuul/service-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils-common/utils-common.iml" filepath="$PROJECT_DIR$/utils-common/utils-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-admin/web-admin.iml" filepath="$PROJECT_DIR$/web-admin/web-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-core/web-core.iml" filepath="$PROJECT_DIR$/web-core/web-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiaoju-parent.iml" filepath="$PROJECT_DIR$/xiaoju-parent.iml" />
+    </modules>
+  </component>
+</project>

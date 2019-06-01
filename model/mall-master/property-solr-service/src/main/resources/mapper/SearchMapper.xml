@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yb.mall.property.solr.service.mapper.SearchMapper">
+
+    <select id="getSolrItemList" resultType="com.yb.mall.property.solr.service.entity.SolrItem">
+       SELECT
+            a.id,
+            a.image,
+            a.price,
+            a.seller,
+            a.title,
+            a.category,
+            a.brand
+        FROM
+            tb_item a
+    </select>
+
+</mapper>

@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: cloud-zuul-server
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+        # dev
+      host: 192.168.3.2
+      port: 8500
+    config:
+      discovery:
+        service-id: cloud-config-server
+        enabled: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 6
+        max-interval: 2000
+        multiplier: 1.1
+      fail-fast: true
+      profile: dev
+
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    org.springframework.cloud.config.client.ConfigServicePropertySourceLocator: warn
+
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  routes:
+    # 商品客户端业务子系统
+    app-api-service:
+      path: /property-client-service/**
+      serviceId: property-client-service
+    # 搜索子系统
+    property-finance-service:
+      path: /property-search-service/**
+      serviceId: property-search-service
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 10000
+
+hystrix:
+  metrics:
+    enabled: true
+  command:
+    default:
+      execution:
+       timeout:
+        enabled: false
+      isolation:
+        thread:
+          timeoutInMilliseconds: 10000
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

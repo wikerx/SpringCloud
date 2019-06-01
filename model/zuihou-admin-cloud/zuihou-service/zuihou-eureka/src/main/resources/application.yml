@@ -1,0 +1,84 @@
+zuihou:
+  ip:
+    local: 127.0.0.1
+  port:
+    local: 8500
+
+server:
+  port: ${zuihou.port.local}
+  servlet:
+    context-path: /${spring.application.name}
+
+eureka:
+  environment: dev
+  datacenter: linux
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${zuihou.ip.local}:${zuihou.port.local}${server.servlet.context-path}/eureka/
+    registerWithEureka: false  # 单机模式 设置为false
+    fetchRegistry: false       # 单机模式 设置为false
+  instance:
+    status-page-url-path: ${server.servlet.context-path}${management.endpoints.web.base-path}/info
+    health-check-url-path: ${server.servlet.context-path}${management.endpoints.web.base-path}/health
+#    prefer-ip-address: true
+#    hostname: ${zuihou.ip.eureka}    # 指定该Eureka实例的主机名
+    ip-address: ${zuihou.ip.local}
+    instance-id: ${zuihou.ip.local}:${server.port}${server.servlet.context-path}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+
+
+
+logging:
+  path: ./logs/zuihou-eureka
+  file: ${logging.path}/root.log
+  common-pattern: '%d{yyyy-MM-dd HH:mm:ss.SSS}:[%5p] [%t:%r] [%C{1}:%M:%L] --> %m%n'
+  level:
+    console: INFO
+
+# 公共配置
+spring:
+  profiles:
+    active: dev
+  application:
+    name: zuihou-eureka
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: USER
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+      enabled: true
+
+#security:
+#  basic:
+#    enabled: true
+#    path: ${management.context-path}
+#  user:
+#    name: admin
+#    password: ${SECURITY_USER_PASSWORD:admin}
+#endpoints:
+#  health:
+#    enabled: true
+#    sensitive: true
+#  enabled: true # actuator的health接口是否需要安全保证
+
+
+info:
+  artifact: zuihou-eureka
+  name: '@project.name@'
+  description: '@project.description@'
+  version: '@project.version@'
+  spring-boot-version: '@spring.boot.version@'
+  spring-cloud-version: '@spring.cloud.version@'
+

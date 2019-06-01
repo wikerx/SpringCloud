@@ -1,0 +1,32 @@
+zuihou:
+  port:
+    nginx: 80
+  ip:
+    redis: ${REDIS_HOST:127.0.0.1}
+    rabbitmq: ${RABBIT_HOST:127.0.0.1}
+    mysql: ${MYSQL_HOST:127.0.0.1}
+    nginx: ${NGINX_HOST:127.0.0.1}
+    eureka: ${EUREKA_HOST:127.0.0.1}
+  mysql:
+    msgs:
+      database: zuihou_msgs_dev     # 根据环境更改
+    port: 3306                  # 根据环境更改
+    username: root              # 根据环境更改
+    password: bNVOqb7WKLX5Bjnw+LMv92taj25KOxDimXxILPQjw42wgv+1lHzOH8kr97xDwWdhpY67QuYCS7sWN4W46YbkFA==
+  feign:
+    admin-server: zuihou-admin-server
+    file-server: zuihou-file-server
+
+spring:
+  application:
+    name: zuihou-msgs-server
+  profiles:
+    active: dev
+
+
+eureka:
+  instance:
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html   # 若 spring.cloud.client.ip-address 获取不到192ip，在手动修改本机ip， 不能修改成localhost和127！
+#  client:
+#    service-url:
+#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${zuihou.ip.eureka}:${zuihou.port.eureka}${zuihou.context-path.eureka}/eureka/

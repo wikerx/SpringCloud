@@ -1,0 +1,114 @@
+server:
+  port: 8088
+
+#spring
+spring:
+  data:
+    solr:
+      host: http://192.168.3.2:8077/solr
+      core: db
+  devtools:
+    restart:
+      enabled: false
+  # mysql
+  datasource:
+    name: druidDataSource
+    url: jdbc:mysql://192.168.3.2:3306/mall?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 666666
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 5
+    maxWait: 600000
+    timeBetweenEvictionRunsMillis: 600000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+
+  # redis
+  redis:
+    database: 0
+    host: 192.168.3.2
+    port: 6479
+    password: zhidian20161226
+    timeout: 0
+    pool:
+      max-active: 50
+      max-wait: -1
+      max-idle: 50
+      min-idle: 0
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.yb.mall.**.entity
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: false
+    auto-mapping-behavior: partial
+    auto-mapping-unknown-column-behavior: warning
+    default-executor-type: simple
+    default-statement-timeout: 25
+    default-fetch-size: 100
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: false
+    local-cache-scope: session
+    jdbc-type-for-null: other
+    interceptors: com.github.pagehelper.PageInterceptor
+    lazy-load-trigger-methods: equals,clone,hashCode,toString
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# pagehelper
+pagehelper:
+  helper-dialect: mysql
+  close-conn: true
+  reasonable: false
+  support-methods-arguments: true
+  params: count=countSql
+
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+zuul:
+    host:
+      connect-timeout-millis: 10000
+      socket-timeout-millis: 10000
+
+hystrix:
+  metrics:
+    enabled: true
+  command:
+    default:
+      execution:
+       timeout:
+        enabled: false
+      isolation:
+        thread:
+          timeoutInMilliseconds: 10000
+
+feign:
+  client:
+    default-to-properties: true
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+        loggerLevel: full
+
+
+logging:
+  level:
+    org.springframework.cloud.config.client.ConfigServicePropertySourceLocator: warn

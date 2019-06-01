@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: EUREKA-SERVER
+---
+eureka:    
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true #设置注册ip
+  headthcheck:
+    enabled: true #开启健康检查
+    server:
+      enable-self-preservation: true #关闭自我保护机制
+---    
+security:  # 安全认证的配置  
+  basic:  
+    enabled: true  
+  user:  
+    name: admin  # 用户名  
+    password: 111111   # 用户密码 
+---
+server:
+  port: 8761
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: peer1
+    ipAddress: 10.1.1.21
+  client:
+    serviceUrl:
+      defaultZone: http://admin:111111@10.1.1.23:8761/eureka/,http://admin:111111@192.168.1.222:8761/eureka/
+---
+server:
+  port: 8761
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: peer2
+    ipAddress: 192.168.1.222
+  client:
+    serviceUrl:
+      defaultZone: http://admin:111111@10.1.1.21:8761/eureka/,http://admin:111111@10.1.1.23:8761/eureka/
+---
+server:
+  port: 8761
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: peer3
+    ipAddress: 10.1.1.23https://gitee.com/dczjzz/EurekaServer.git
+  client:
+    serviceUrl:
+      defaultZone: http://admin:111111@10.1.1.21:8761/eureka/,http://admin:111111@192.168.1.222:8761/eureka/
+
+    

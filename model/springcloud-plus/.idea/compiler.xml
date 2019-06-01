@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="admin-manage" />
+        <module name="config-client" />
+        <module name="config-server" />
+        <module name="entity-common" />
+        <module name="eureka-client" />
+        <module name="getbang-common" />
+        <module name="getbang-shop-api" />
+        <module name="getbang-shop-service" />
+        <module name="server-netease-im" />
+        <module name="server-redis" />
+        <module name="server-solr" />
+        <module name="service-code-ganeration" />
+        <module name="service-common" />
+        <module name="service-feign" />
+        <module name="service-login" />
+        <module name="service-mysql" />
+        <module name="service-reptile" />
+        <module name="service-ribbon" />
+        <module name="service-user" />
+        <module name="service-zuul" />
+        <module name="utils-common" />
+        <module name="web-admin" />
+        <module name="web-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin-manage" target="1.8" />
+      <module name="config-client" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="entity-common" target="1.8" />
+      <module name="eureka-client" target="1.8" />
+      <module name="getbang-common" target="1.8" />
+      <module name="getbang-shop" target="1.8" />
+      <module name="getbang-shop-api" target="1.8" />
+      <module name="getbang-shop-service" target="1.8" />
+      <module name="server-netease-im" target="1.8" />
+      <module name="server-redis" target="1.8" />
+      <module name="server-solr" target="1.8" />
+      <module name="service-code-ganeration" target="1.8" />
+      <module name="service-common" target="1.8" />
+      <module name="service-feign" target="1.8" />
+      <module name="service-login" target="1.8" />
+      <module name="service-mysql" target="1.8" />
+      <module name="service-reptile" target="1.8" />
+      <module name="service-ribbon" target="1.8" />
+      <module name="service-user" target="1.8" />
+      <module name="service-zuul" target="1.8" />
+      <module name="utils-common" target="1.8" />
+      <module name="web-admin" target="1.8" />
+      <module name="web-core" target="1.8" />
+      <module name="xiaoju-parent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>socket.html</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html" charset="UTF-8">
+</head>
+<body>
+Welcome<br/>
+登录用户id：<input id="userId" type="text">
+<button onclick="connectWebSocket()">连接</button>
+<br>
+发送内容：<input id="text" type="text"/>
+发送用户id：<input id="sendUserId" type="text">
+<button onclick="send()">发送</button>
+<button onclick="closeWebSocket()">关闭</button>
+<div id="message"></div> 
+<p id="response"></p>
+<script th:src="@{jquery.js}"></script>
+<script type="text/javascript">
+var websocket = null;
+var response = $("#response");
+var msg = "";
+$(function (){
+})
+window.onunload = function () {
+    closeWebSocket();
+}
+
+function connectWebSocket() {
+    var userID = $("#userId").val();
+    console.log("开始...");
+    websocket = new WebSocket("ws://127.0.0.1:9085/push-api/myHandler/ID=" + userID);
+    websocket.onopen = function () {
+        console.log("onpen");
+    }
+    websocket.onclose = function () {
+        console.log("onclose");
+    }
+    websocket.onmessage = function (msg) {
+        console.log(msg.data);
+        showResponse(msg.data);
+    }
+}
+
+function send() {
+    var postValue = {};
+    postValue.id = $("#sendUserId").val();
+    postValue.message = $("#text").val();
+    websocket.send(JSON.stringify(postValue));
+}
+
+function closeWebSocket() {
+    if (websocket != null) {
+        websocket.close();
+    }
+}
+
+function showResponse(message) {
+    msg = msg+message+"<br>";
+    response.html(msg);
+}
+</script>
+</body>

@@ -1,0 +1,76 @@
+server:
+  port: 8089
+
+#spring
+spring:
+  # mysql
+  datasource:
+    name: druidDataSource
+    url: jdbc:mysql://192.168.3.2:3306/mall?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 666666
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 5
+    maxWait: 600000
+    timeBetweenEvictionRunsMillis: 600000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+
+  # redis
+  redis:
+    database: 0
+    host: 192.168.3.2
+    port: 6479
+    password: zhidian20161226
+    timeout: 0
+    pool:
+      max-active: 50
+      max-wait: -1
+      max-idle: 50
+      min-idle: 0
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+zuul:
+    host:
+      connect-timeout-millis: 10000
+      socket-timeout-millis: 10000
+
+hystrix:
+  metrics:
+    enabled: true
+  command:
+    default:
+      execution:
+       timeout:
+        enabled: false
+      isolation:
+        thread:
+          timeoutInMilliseconds: 10000
+
+feign:
+  client:
+    default-to-properties: true
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+        loggerLevel: full
+
+
+logging:
+  level:
+    org.springframework.cloud.config.client.ConfigServicePropertySourceLocator: warn

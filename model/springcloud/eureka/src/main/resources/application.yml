@@ -1,0 +1,36 @@
+#仅用于本地开发的时候，讲不可用的实例正确剔除
+eureka:
+  server:
+    enable-self-preservation: false
+spring:
+  application:
+    name: eureka-server
+#开启基于HTTP basic的认证
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: 111111
+---
+spring:
+  profiles: peer1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://admin:111111@peer2:8761/eureka/
+---
+spring:
+  profiles: peer2
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://admin:111111@peer1:8761/eureka/

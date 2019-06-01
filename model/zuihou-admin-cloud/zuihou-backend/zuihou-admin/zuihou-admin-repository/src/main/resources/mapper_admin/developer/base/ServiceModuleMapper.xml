@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.zuihou.admin.repository.developer.dao.ServiceModuleMapper">
+  <resultMap id="BaseResultMap" type="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="public_is" jdbcType="BIT" property="publicIs" />
+    <result column="public_look" jdbcType="BIT" property="publicLook" />
+    <result column="api_url" jdbcType="VARCHAR" property="apiUrl" />
+    <result column="resource_num" jdbcType="INTEGER" property="resourceNum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+    @mbggenerated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+    @mbggenerated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+    @mbggenerated
+    -->
+    id, app_id, logo, name, code, describe, status, email, type, create_user, create_time, 
+    update_user, update_time, public_is, public_look, api_url, resource_num
+  </sql>
+  <select id="selectByExample" parameterType="com.github.zuihou.admin.repository.developer.example.ServiceModuleExample" resultMap="BaseResultMap">
+    <!--
+    @mbggenerated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from a_service_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="groupByClause != null">
+      group by ${groupByClause}
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limitValue != null">
+      limit ${limitValue}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+    @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from a_service_module
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectEntity" parameterType="com.github.zuihou.admin.repository.developer.example.ServiceModuleExample" resultMap="BaseResultMap">
+    <!--
+    @mbggenerated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from a_service_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="groupByClause != null">
+      group by ${groupByClause}
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 0,1 
+  </select>
+  <select id="selectByAppIdAndId" parameterType="map" resultMap="BaseResultMap">
+    <!--
+    @mbggenerated
+    -->
+    select
+    <include refid="Base_Column_List" />
+    from a_service_module
+    where 1=1 and app_id = #{appId,jdbcType=VARCHAR} and id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAppIdById" parameterType="java.lang.Long" resultType="java.lang.String">
+    <!--
+    @mbggenerated
+    -->
+    select app_id 
+    from a_service_module
+    where 1=1 and id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--
+    @mbggenerated
+    -->
+    delete from a_service_module
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.github.zuihou.admin.repository.developer.example.ServiceModuleExample">
+    <!--
+    @mbggenerated
+    -->
+    delete from a_service_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <delete id="deleteByIds" parameterType="list">
+    <!--
+    @mbggenerated
+    -->
+    delete from  a_service_module where id in 
+    <foreach collection="list" open="(" close=")" index="index" item="item" separator=",">
+      #{item}
+    </foreach> 
+  </delete>
+  <delete id="deleteByAppIdAndId" parameterType="map">
+    <!--
+    @mbggenerated
+    -->
+    delete from a_service_module
+    where id = #{id,jdbcType=BIGINT}
+     and app_id = #{appId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByAppIdAndIds" parameterType="map">
+    <!--
+    @mbggenerated
+    -->
+    delete from  a_service_module where id in 
+    <foreach collection="list" open="(" close=")" index="index" item="item" separator=",">
+      #{item}
+    </foreach> 
+     and app_id = #{appId,jdbcType=VARCHAR}
+  </delete>
+  <update id="removeByExample" parameterType="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    set is_delete = 1 
+
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="removeByAppIdAndIds" parameterType="map">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    set is_delete = 1 
+ where 1=1 and id in 
+ <foreach collection="list" open="(" close=")" index="index" item="item" separator=",">
+    #{item}
+  </foreach>
+     and app_id = #{appId,jdbcType=VARCHAR}
+  </update>
+  <update id="removeByPrimaryKey" parameterType="java.lang.Long">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    set is_delete = 1 
+
+     where 1=1 and id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="removeByAppIdAndId" parameterType="map">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    set is_delete = 1 
+
+     where 1=1 and id = #{id,jdbcType=BIGINT}
+     and app_id = #{appId,jdbcType=VARCHAR}
+  </update>
+  <insert id="insert" parameterType="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    insert into a_service_module (id, app_id, logo, 
+      name, code, describe, 
+      status, email, type, 
+      create_user, create_time, update_user, 
+      update_time, public_is, public_look, 
+      api_url, resource_num)
+    values (#{id,jdbcType=BIGINT}, #{appId,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{publicIs,jdbcType=BIT}, #{publicLook,jdbcType=BIT}, 
+      #{apiUrl,jdbcType=VARCHAR}, #{resourceNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="batchInsert" parameterType="java.util.List">
+    <!--
+    @mbggenerated
+    -->
+    insert into a_service_module (id, app_id, logo, name, code, describe, status, email, type, create_user, create_time, update_user, update_time, public_is, public_look, api_url, resource_num ) values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.appId,jdbcType=VARCHAR}, #{item.logo,jdbcType=VARCHAR}, 
+        #{item.name,jdbcType=VARCHAR}, #{item.code,jdbcType=VARCHAR}, #{item.describe,jdbcType=VARCHAR}, 
+        #{item.status,jdbcType=INTEGER}, #{item.email,jdbcType=VARCHAR}, #{item.type,jdbcType=VARCHAR}, 
+        #{item.createUser,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateUser,jdbcType=VARCHAR}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.publicIs,jdbcType=BIT}, #{item.publicLook,jdbcType=BIT}, 
+        #{item.apiUrl,jdbcType=VARCHAR}, #{item.resourceNum,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    insert into a_service_module
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="publicIs != null">
+        public_is,
+      </if>
+      <if test="publicLook != null">
+        public_look,
+      </if>
+      <if test="apiUrl != null">
+        api_url,
+      </if>
+      <if test="resourceNum != null">
+        resource_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publicIs != null">
+        #{publicIs,jdbcType=BIT},
+      </if>
+      <if test="publicLook != null">
+        #{publicLook,jdbcType=BIT},
+      </if>
+      <if test="apiUrl != null">
+        #{apiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceNum != null">
+        #{resourceNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.github.zuihou.admin.repository.developer.example.ServiceModuleExample" resultType="java.lang.Integer">
+    <!--
+    @mbggenerated
+    -->
+    select count(*) from a_service_module
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.appId != null">
+        app_id = #{record.appId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logo != null">
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describe != null">
+        describe = #{record.describe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null">
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.publicIs != null">
+        public_is = #{record.publicIs,jdbcType=BIT},
+      </if>
+      <if test="record.publicLook != null">
+        public_look = #{record.publicLook,jdbcType=BIT},
+      </if>
+      <if test="record.apiUrl != null">
+        api_url = #{record.apiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceNum != null">
+        resource_num = #{record.resourceNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    set id = #{record.id,jdbcType=BIGINT},
+      app_id = #{record.appId,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      describe = #{record.describe,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      email = #{record.email,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      public_is = #{record.publicIs,jdbcType=BIT},
+      public_look = #{record.publicLook,jdbcType=BIT},
+      api_url = #{record.apiUrl,jdbcType=VARCHAR},
+      resource_num = #{record.resourceNum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    <set>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publicIs != null">
+        public_is = #{publicIs,jdbcType=BIT},
+      </if>
+      <if test="publicLook != null">
+        public_look = #{publicLook,jdbcType=BIT},
+      </if>
+      <if test="apiUrl != null">
+        api_url = #{apiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceNum != null">
+        resource_num = #{resourceNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByAppIdAndIdSelective" parameterType="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    <set>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publicIs != null">
+        public_is = #{publicIs,jdbcType=BIT},
+      </if>
+      <if test="publicLook != null">
+        public_look = #{publicLook,jdbcType=BIT},
+      </if>
+      <if test="apiUrl != null">
+        api_url = #{apiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceNum != null">
+        resource_num = #{resourceNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+     and app_id = #{appId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    set app_id = #{appId,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      public_is = #{publicIs,jdbcType=BIT},
+      public_look = #{publicLook,jdbcType=BIT},
+      api_url = #{apiUrl,jdbcType=VARCHAR},
+      resource_num = #{resourceNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByAppIdAndId" parameterType="com.github.zuihou.admin.entity.developer.po.ServiceModule">
+    <!--
+    @mbggenerated
+    -->
+    update a_service_module
+    set app_id = #{appId,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      public_is = #{publicIs,jdbcType=BIT},
+      public_look = #{publicLook,jdbcType=BIT},
+      api_url = #{apiUrl,jdbcType=VARCHAR},
+      resource_num = #{resourceNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+     and app_id = #{appId,jdbcType=VARCHAR}
+  </update>
+</mapper>

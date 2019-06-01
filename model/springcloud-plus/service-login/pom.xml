@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.getbang</groupId>
+		<artifactId>xiaoju-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>service-login</artifactId>
+	<name>service-login</name>
+	<description>通用登录服务</description>
+	 <properties>
+  		<shiro.version>1.4.0</shiro.version>
+  	</properties>
+	<dependencies>
+	
+	<dependency>
+		<groupId>net.getbang</groupId>
+		<artifactId>utils-common</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+		<!--shiro依赖 start -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<!--shiro end -->
+	</dependencies>
+</project>

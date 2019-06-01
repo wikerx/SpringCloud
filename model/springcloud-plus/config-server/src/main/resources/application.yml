@@ -1,0 +1,20 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/hai411741962/spring-cloud-config.git
+          search-paths: spring-cloud-config
+      label: master
+  rabbitmq: 
+    host: localhost
+    port: 5672       
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+

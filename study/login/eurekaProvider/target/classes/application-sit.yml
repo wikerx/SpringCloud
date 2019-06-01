@@ -1,0 +1,17 @@
+#数据库配置
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: root
+    password: test
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+#    建表：create    以后都用update
+      ddl-auto: update
+      naming:
+#      开启驼峰命名
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+#  日志中显示sql语句
+    show-sql: true
