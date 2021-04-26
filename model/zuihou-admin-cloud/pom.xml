@@ -68,7 +68,7 @@
         <dozer.version>6.4.0</dozer.version>
         <!--<dozer.version>5.5.1</dozer.version>-->
         <commons.fileupload.version>1.3.3</commons.fileupload.version>
-        <commons.io.version>2.6</commons.io.version> <!-- excel -->
+        <commons.io.version>2.7</commons.io.version> <!-- excel -->
         <commons.beanutils.version>1.9.3</commons.beanutils.version>
         <poi.ooxml.version>3.17</poi.ooxml.version>
         <shiro.version>1.4.0</shiro.version>
