@@ -60,7 +60,7 @@
         <fastjson.version>1.2.45</fastjson.version>
         <alibaba.druid.version>1.1.6</alibaba.druid.version>
         <!--<mysql.version>5.1.40</mysql.version>-->
-        <mysql.version>6.0.6</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <pagehelper.starter.version>1.2.3</pagehelper.starter.version>
         <pagehelper.version>5.1.2</pagehelper.version>
         <springfox.swagger2.version>2.9.2</springfox.swagger2.version>
